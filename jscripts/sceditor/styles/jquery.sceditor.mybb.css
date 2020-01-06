@@ -1,0 +1,519 @@
+/*! SCEditor | (C) 2011-2013, Sam Clarke | sceditor.com/license */
+html, body, p, code:before, table {
+	margin: 0;
+	padding: 0;
+	font-family: Tahoma, Verdana, Arial, Sans-Serif;
+	font-size: 14px;
+	color: #bdbdbd;
+}
+
+html {
+	/* Needed so the cursor will be placed at the end of the content
+	   when the there isn't enought content to fill the full viewport */
+	height: 100%;
+
+	/* Needed for iOS scrolling bug fix */
+	overflow: auto;
+	-webkit-overflow-scrolling: touch;
+	
+	scrollbar-color: #8e0c0c #270000;
+	scrollbar-width: thin;
+}
+
+body {
+	/* Needed for iOS scrolling bug fix */
+	position: relative;
+	overflow: auto;
+
+	/* Needed so the cursor will be placed at the end of the content
+	   when the there isn't enought content to fill the full viewport */
+	min-height: 100%;
+	word-wrap: break-word;
+	width: calc(100% - 5px);
+}
+
+
+table, td {
+	border: 1px dotted #000;
+
+	/* Show empty cells so they can be edited */
+	empty-cells: show;
+}
+
+code:before {
+	font-weight: bold;
+	content: 'Code:';
+	display: block;
+	border-bottom: 1px solid #ccc;
+	padding: 4px 0 3px 0;
+	margin-bottom: 10px;
+}
+
+code.phpcodeblock:before {
+	content: 'PHP Code:' !important;
+}
+
+code {
+	font-family: Monaco, Consolas, Courier, monospace;
+	font-size: 13px !important;
+	padding: 10px;
+	position: relative;
+	background: #121212;
+	margin: .25em .05em 0 0;
+	border: 1px solid #3b4605;
+	white-space: pre;
+	display: block;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+}
+
+.ie6 code, .ie7 code {
+	margin-top: 0;
+}
+
+code:before, code {
+	display: block;
+	text-align: left;
+}
+
+blockquote {
+	position: relative;
+	background: white;
+	margin: .25em .05em 0 0;
+	border: 1px solid #ccc;
+	padding: 10px;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+}
+
+blockquote cite {
+	font-weight: bold;
+	font-style: normal;
+	display: block;
+	font-size: 1em;
+	border-bottom: 1px solid #ccc;
+	margin-bottom: 10px;
+	padding-bottom: 3px;
+}
+
+/* prevent divs from being collapsed */
+div {
+	min-height: 1.25em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	padding: 0;
+	margin: 0;
+}
+
+ul, ol {
+	margin-top: 0;
+	margin-bottom: 0;
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+img {
+	max-width: 100%;
+}
+
+font[size="1"] {
+    font-size: xx-small;
+}
+
+font[size="2"] {
+    font-size: x-small;
+}
+
+font[size="3"] {
+    font-size: small;
+}
+
+font[size="4"] {
+    font-size: medium;
+}
+
+font[size="5"] {
+    font-size: large;
+}
+
+font[size="6"] {
+    font-size: x-large;
+}
+
+font[size="7"] {
+    font-size: xx-large;
+}
+
+/* Scrollbar Chrome*/
+*::-webkit-scrollbar {
+    width: 10px ! important;
+    height: 10px ! important;
+    background: #270000 !important;
+    border: 1px solid #310303 ! important;
+}
+
+*::-webkit-scrollbar-button {
+    display: none ! important;
+}
+
+*::-webkit-scrollbar-thumb, *::-webkit-scrollbar-track {
+    border: 0 ! important;
+    box-shadow: none;
+}
+
+*::-webkit-scrollbar-thumb {
+    min-height: 28px ! important;
+    background: #8e0c0c! important;
+}
+
+*::-webkit-scrollbar-corner, *::-webkit-scrollbar-track {
+    background: #270000 !important;
+}
+
+/* ScrollBar Firefox */
+html, #shoutbox .body > .window,
+.sceditor-container textarea {
+	scrollbar-color: #8e0c0c #270000;
+	scrollbar-width: thin;
+}
+
+/*
+Cuando comienza con # es porque es: id="myid"
+Cuando comienza con . es porque es: class="myclass"
+Cuando no lleva # ni . es porque es una etiqueta ejemplo: div
+
+OBS: Siempre cada linea debe terminar con un ; si no lo lleva se jodera el estilo y no cargara correctamente
+#estilo {
+ color: red;
+ font-weight: bold;
+}
+
+#myid {
+ color: red;
+}
+
+.myclass {
+ color: black;
+}
+
+div {
+ color: white;
+}
+
+*/
+/* STYLE PARA EL HEADER*/
+
+#mxe_server {
+	color: #f00 !important;
+	text-shadow: 0px 0px 5px #cc0000;
+	background:url(https://i.imgur.com/aATZooy.gif);
+	background-position-y: -34px;
+	font-weight: bold;
+}
+
+/*GRUPO STAFF*/
+
+#mxe_owner {
+	color: #f00 !important;
+	text-shadow: 0px 0px 5px #cc0000;
+	background:url(https://i.imgur.com/aATZooy.gif);
+	font-weight: bold;
+	background-size: 50px;
+}
+
+#mxe_staff {
+	 color: #000 !important;
+	 background:url(https://i.imgur.com/aATZooy.gif);
+	 text-shadow: 
+		 0 0 2px #ccc,
+		 0 0 2px #ccc,
+		 0 0 2px #ccc,
+		 0 0 2px #ccc,
+		 0 0 7px #ccc;
+	font-weight: 900;
+ }
+
+#mxe_mod {
+	color: #ff7e00 !important;
+	text-shadow: 0px 0px 5px #FF3600;
+	background:url(https://i.imgur.com/aATZooy.gif);
+	font-weight: 900;
+}
+
+#mxe_modmc {
+	color: #000AFF !important;
+	text-shadow: -1px -1px 1px #5E0, 1px 1px 1px #0ff, -1px 1px 1px #fff, 1px -1px 1px #fff;
+	background:url(https://i.imgur.com/aATZooy.gif);
+	font-weight: 800;
+}
+
+/*GRUPO DE USUARIOS*/
+
+#mxe_donor {
+	color: #EDFF00 !important;
+    text-shadow: 0px 0px 4px #ffb100;
+	background: url(https://i.imgur.com/cmctLSE.gif);
+	font-weight: bold;
+}
+
+#mxe_vip {
+    color: #0064c8 !important;
+    text-shadow: 0px 0px 5px #0000ff;
+    text-shadow: 1px 1px 5px #0120ff;
+	background-size: 21px;
+    background: url(https://i.imgur.com/cmctLSE.gif);
+	font-weight: bold;
+}
+
+#mxe_girl {
+	background: url(https://i855.photobucket.com/albums/ab117/antonif5/corazones-1.gif);
+	color: #f721ff !important;;
+	text-shadow: 0px 0px 5px #ff00eb;
+	font-weight: bold;
+}
+.text.color-text-flow {
+background: url(https://i855.photobucket.com/albums/ab117/antonif5/corazones-1.gif);
+}
+#mxe_user {
+    color: #008BD6 !important;
+	font-weight: bold;
+}
+
+#mxe_advanceuser {
+    color: #39CEF6 !important;
+    text-shadow: 0px 0px 5px #0000ff;
+	font-weight: bold;
+}
+
+#mxe_veterano {
+	color: #7c61ff !important;
+	text-shadow: 0px 0px 10px #4b00ff;
+	font-weight: bold;
+}
+
+#mxe_mapper {
+	color: #39D225 !important;
+	text-shadow: 0px 0px 10px #108704;
+	font-weight: bold;
+}
+
+#mxe_owner i, #mxe_staff i, #mxe_mod i, 
+#mxe_donor i, #mxe_vip i,
+#mxe_girl i, #mxe_user i, #mxe_advanceuser i, #mxe_veterano i {
+	color: inherit !important;
+	-webkit-text-fill-color: initial;
+	margin-top: 0px;
+	padding-left: 2px;
+	font-size: 13px;
+}
+#mxe_owner, #mxe_staff, #mxe_mod, 
+#mxe_donor, #mxe_vip,
+#mxe_girl, #mxe_user, #mxe_advanceuser, #mxe_veterano {
+        overflow-wrap: break-word;
+}
+
+/*Prefijos*/
+#mxe_importante {
+	color: #f00 !important;
+	text-shadow: 0px 0px 5px #cc0000;
+	background:url(https://i.imgur.com/aATZooy.gif);
+	font-weight: bold;
+}
+
+#mxe_aceptado {
+	color: #00FF00 !important;
+	text-shadow: 0px 0px 5px #0017FF;
+	background-position-y: -34px;
+	font-weight: bold;
+}
+
+#mxe_rechazado {
+	color: #f00 !important;
+	text-shadow: 0px 0px 5px #cc0000;
+	background-position-y: -34px;
+	font-weight: bold;
+}
+
+#mxe_actualizacion {
+	color: #ff7e00 !important;
+	text-shadow: 0px 0px 5px #FF3600;
+	font-weight: 900;
+}
+
+#mxe_reporte {
+    color: #FFFB00 !important;
+	font-weight: bold;
+}
+
+/* STYLE PARA LOS PREFIJOS */
+
+.prefix {
+	background-color: #151515 !important;
+	border-radius: 0.3rem;
+	padding: 0.1rem 0.4rem;
+	position: relative;
+	display: inline-block;
+	font-size: 10px;
+	border: 0.1rem solid #373739;
+	margin-bottom: 0.3rem;
+}
+
+/* Form's */
+#mxe_form {
+	font-weight: bold;
+	color: orange;
+}
+
+#mxe_form_ban {
+}
+
+#mxe_form_server {
+	color: #4169e1;
+}
+
+#mxe_form_by {
+	color: darkgreen;
+}
+
+#mxe_form_steamid {
+	color: darkgreen;
+	font-weight:bold;
+}
+
+#mxe_form_adminid {
+	color: #08f106;
+	font-weight:bold;
+}
+
+/* Best Answer background-color */
+.post_content_ba {
+	padding: 9px 10px 5px 10px;
+	background: #D6ECA6 !important;
+}
+
+
+/* Detalles de: boton de contactos en el staff page y memberlist, y del boton de pruebas en el formulario */
+.user-list .inline-profiles, .user-list .inline-stats, .mxe_proof-list .mxe_proof {
+ text-align:center;
+}
+.user-list .inline-profiles {
+	min-height: 42px;
+}
+.user-list .inline-profiles > a, .user-list .inline-stats > a {
+	display: inline-block;
+    background: #5d0000;
+    padding: 6px 12px;
+    border-radius: 3px;
+    font-size: 20px;
+    margin: 5px 3px;
+    color: #fff;
+}
+
+/* Campo Pruebas de los formularios */
+.mxe_proof-list .mxe_proof > div {
+    display: inline-block;
+    background: #5d0000;
+    padding: 6px 12px;
+    border-radius: 3px;
+    font-size: 20px;
+    margin: 5px 3px;
+    color: #fff;
+}
+
+.mxe_proof-list .mxe_proof input[type="checkbox"], .mxe_proof-list .mxe_proof input[type="radio"] {
+    height: 12pt;
+    width: 12pt;
+}
+
+.mxe_proof-list.stable .row.normal {
+padding: 0px 25px;
+border-radius: 1em;
+}
+
+/* Iconos de abajo de la pagina index.php */
+.categories .category > .headline .close img,
+.statsboard .stat.threads .icon,
+.statsboard .stat.posts .icon,
+.statsboard .stat.users .icon,
+.footer__btt__bttn,
+.stable > .headline .close img {
+   filter: saturate(5) hue-rotate(165deg) contrast(2);
+}
+
+/* Iconos de: Marcar foro como leÃ­do y Subscribirse a este foro */
+a.mxe_forumSubs:before {
+	content: "\f674" !important;
+}
+a.mxe_forumMarkRead:before, #markall i.fa-check-double:before {
+	content: "\f06e" !important;
+}
+
+/* Cuando se visualiza la pagina de redirect */
+body.mxe_forumRedirect {
+	background: #08080a;
+}
+body.mxe_forumRedirect:before {
+	height: 99.31% !important;
+	border-top: 2px solid #ca0606;
+	border-bottom: 2px solid #ca0606;
+	background-image: url(../../../images/grom/footer-bg.png);
+	display: block;
+	display: inline-block;
+	background-position-y: bottom;
+	background-position-x: center;
+}
+body.mxe_forumRedirect .we {
+	background-size:auto;
+}
+body.mxe_forumRedirect .r_bg {
+	background: none!important;
+}
+body.mxe_forumRedirect .mobile-menus-open {
+	display: none;
+}
+
+/* Botones de los mensajes/comentarios */
+.postbit_buttons i:before
+{
+	color: #222;
+	text-shadow: 1pt 0px 2px #eee, 0px 1pt 2px #eee, -1pt 0px 2px #eee, 0px -1pt 2px #eee;
+}
+
+.postbit_buttons i.fa-trash:before
+{
+	color: #333;	
+}
+
+.postbit_buttons i.fa-trash-restore:before
+{
+	color: #217d00;
+}
+
+.postbit_buttons i.fa-comment-dots:before
+{
+	color: #e16900;
+	text-shadow: auto auto auto black;
+}
+
+.postbit_multiquote_on i.fa-plus-square:before
+{
+	content: "\f146";
+}
+
+/* ultimos temas */
+#cat_recentthreads_e > div.forum
+{
+	padding: 0.25rem 0;
+}
+
+a:visited, a:link, a {
+    font-weight: 400;
+    color: #424251;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+    color: #00b7ff;
+    text-shadow: 0px 0px 5px;
+}

@@ -1,0 +1,28 @@
+.st-line {
+    margin: 10px 0;
+    font-size: 10.5pt;
+}
+.fd.categories {
+    display: block;
+}
+.rules {
+    margin-bottom: 15px;
+}
+.tl-container.second-cont {
+    margin: 20px 0;
+}
+.tl-container {
+    margin: 20px 0;
+}
+.tl-container .left {
+    float: left;
+}
+.tl-container .right {
+    float: right;
+    text-align: right;
+}
+.stable .right {
+    float: right;
+}
+		
+		
